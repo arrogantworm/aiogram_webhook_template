@@ -12,6 +12,7 @@ async def on_startup(bot: Bot):
 
 
 async def on_shutdown(bot: Bot):
+    await bot.delete_webhook()
     await bot.send_message(config.ADMIN_ID, 'Бот остановлен')
 
 
