@@ -8,12 +8,12 @@ from core.handlers import basic
 
 
 async def on_startup(bot: Bot):
-    await bot.send_message(config.ADMIN_ID, 'Бот запущен')
+    await bot.send_message(chat_id=config.ADMIN_ID, text='Бот запущен')
 
 
 async def on_shutdown(bot: Bot):
+    await bot.send_message(chat_id=config.ADMIN_ID, text='Бот остановлен')
     await bot.delete_webhook()
-    await bot.send_message(config.ADMIN_ID, 'Бот остановлен')
 
 
 async def start():
