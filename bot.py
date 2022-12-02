@@ -9,7 +9,6 @@ from core.handlers import basic
 
 async def on_startup(bot: Bot):
     await bot.send_message(chat_id=config.ADMIN_ID, text='Бот запущен')
-    print('Бот запущен')
 
 
 async def on_shutdown(bot: Bot):
@@ -41,8 +40,6 @@ async def start():
         await runner.setup()
         site = web.TCPSite(runner, host=config.SERVER_HOST, port=config.SERVER_PORT)
         await site.start()
-
-        await asyncio.Event().wait()
     finally:
         await bot.session.close()
 
