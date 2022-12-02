@@ -29,15 +29,15 @@ async def start():
 
     try:
         await bot.set_webhook(
-            url=config.URL_DOMAIN + config.URL_PATH,
+            url=config.URL_DOMAIN.get_secret_value() + config.URL_PATH.get_secret_value(),
             drop_pending_updates=True,
             allowed_updates=dp.resolve_used_update_types()
         )
         app = web.Application()
-        SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=config.URL_PATH)
+        SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=config.URL_PATH.get_secret_value())
         runner = web.AppRunner(app)
         await runner.setup()
-        site = web.TCPSite(runner, host=config.SERVER_HOST, port=config.SERVER_PORT)
+        site = web.TCPSite(runner, host=config.SERVER_HOST.get_secret_value(), port=config.SERVER_PORT.get_secret_value())
         await site.start()
 
         await asyncio.Event().wait()
