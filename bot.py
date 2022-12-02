@@ -8,11 +8,11 @@ from core.handlers import basic
 
 
 async def on_startup(bot: Bot):
-    await bot.send_message(config.ADMIN_ID.get_secret_value(), 'Бот запущен')
+    await bot.send_message(config.ADMIN_ID, 'Бот запущен')
 
 
 async def on_shutdown(bot: Bot):
-    await bot.send_message(config.ADMIN_ID.get_secret_value(), 'Бот остановлен')
+    await bot.send_message(config.ADMIN_ID, 'Бот остановлен')
 
 
 async def start():
@@ -29,15 +29,15 @@ async def start():
 
     try:
         await bot.set_webhook(
-            url=config.URL_DOMAIN.get_secret_value() + config.URL_PATH.get_secret_value(),
+            url=config.URL_DOMAIN + config.URL_PATH,
             drop_pending_updates=True,
             allowed_updates=dp.resolve_used_update_types()
         )
         app = web.Application()
-        SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=config.URL_PATH.get_secret_value())
+        SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=config.URL_PATH)
         runner = web.AppRunner(app)
         await runner.setup()
-        site = web.TCPSite(runner, host=config.SERVER_HOST.get_secret_value(), port=config.SERVER_PORT.get_secret_value())
+        site = web.TCPSite(runner, host=config.SERVER_HOST, port=config.SERVER_PORT)
         await site.start()
 
         await asyncio.Event().wait()
