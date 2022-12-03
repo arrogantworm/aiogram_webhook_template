@@ -1,5 +1,6 @@
 from aiogram import Bot, Dispatcher
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler
+from aiogram.methods.send_message import SendMessage
 from core.settings import config
 from aiohttp import web
 import asyncio
@@ -8,7 +9,7 @@ from core.handlers import basic
 
 
 async def on_startup(bot: Bot):
-    await bot.send_message(chat_id=config.ADMIN_ID, text='Бот запущен')
+    return SendMessage(chat_id=config.ADMIN_ID, text='Бот запущен')
 
 
 async def on_shutdown(bot: Bot):
