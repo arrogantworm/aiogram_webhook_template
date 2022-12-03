@@ -40,6 +40,8 @@ async def start():
         await runner.setup()
         site = web.TCPSite(runner, host=config.SERVER_HOST, port=config.SERVER_PORT)
         await site.start()
+
+        await asyncio.Event().wait()
     finally:
         await bot.session.close()
 
