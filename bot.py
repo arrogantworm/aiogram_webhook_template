@@ -7,15 +7,10 @@ import logging
 from core.handlers import basic
 
 
-router = Router()
-
-
-@router.startup()
 async def on_startup(bot: Bot):
     await bot.send_message(chat_id=config.ADMIN_ID, text='Бот запущен')
 
 
-@router.shutdown()
 async def on_shutdown(bot: Bot):
     await bot.send_message(chat_id=config.ADMIN_ID, text='Бот остановлен')
     await bot.delete_webhook()
@@ -31,7 +26,6 @@ async def start():
     dp.shutdown.register(on_shutdown)
 
     # Routers
-    dp.include_router(router)
     dp.include_router(basic.router)
 
     try:
