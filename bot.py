@@ -23,8 +23,8 @@ async def start():
                                '(%(filename)s).%(funcName)s(%(lineno)d) - %(message)s')
     bot = Bot(config.BOT_TOKEN.get_secret_value())
     dp = Dispatcher()
-    dp.startup.register(on_startup)
-    dp.shutdown.register(on_shutdown)
+    # dp.startup.register(on_startup)
+    # dp.shutdown.register(on_shutdown)
 
     # Routers
     dp.include_router(startup.router)
