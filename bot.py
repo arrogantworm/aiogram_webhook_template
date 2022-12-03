@@ -5,6 +5,7 @@ from aiohttp import web
 import asyncio
 import logging
 from core.handlers import basic
+from core.utils import startup
 
 
 async def on_startup(bot: Bot):
@@ -26,6 +27,7 @@ async def start():
     dp.shutdown.register(on_shutdown)
 
     # Routers
+    dp.include_router(startup.router)
     dp.include_router(basic.router)
 
     try:
