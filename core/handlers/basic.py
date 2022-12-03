@@ -1,19 +1,17 @@
-from aiogram import Router, Bot
+from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove
 from aiogram.fsm.context import FSMContext
 from aiogram.filters.text import Text
-from core.settings import config
 
 
 router = Router()
 
 
 @router.message(Command(commands=["start"]))
-async def start_handler(message: Message, state: FSMContext, bot: Bot):
+async def start_handler(message: Message, state: FSMContext):
     await state.clear()
     await message.answer('Привет', reply_markup=ReplyKeyboardRemove())
-    await bot.send_message(chat_id=config.ADMIN_ID, text='Бот запущен')
 
 
 @router.message(Command(commands=["cancel"]))
