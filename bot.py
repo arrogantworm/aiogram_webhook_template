@@ -42,9 +42,7 @@ async def start():
         await site.start()
 
         await asyncio.Event().wait()
-        await on_startup(bot)
     finally:
-        await on_shutdown(bot)
         await bot.session.close()
 
 
