@@ -28,6 +28,8 @@ async def start():
 
     # Routers
     dp.include_router(startup.router)
+    startup.router.startup.register(startup.on_startup)
+    startup.router.shutdown.register(startup.on_shutdown)
     dp.include_router(basic.router)
 
     try:
