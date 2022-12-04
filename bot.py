@@ -4,10 +4,12 @@ from aiogram import Bot, Dispatcher
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 from aiohttp import web
 from core.settings import config
+from core.utils import commands
 from core.handlers import basic
 
 
 async def on_startup(bot: Bot):
+    await commands.set_commands(bot)
     await bot.send_message(chat_id=config.ADMIN_ID, text='Бот запущен')
 
 
