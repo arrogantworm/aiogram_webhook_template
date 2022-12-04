@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, Router
-from aiogram.webhook.aiohttp_server import SimpleRequestHandler
+from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 from core.settings import config
 from aiohttp import web
 import asyncio
@@ -40,7 +40,7 @@ async def start():
         await runner.setup()
         site = web.TCPSite(runner, host=config.SERVER_HOST, port=config.SERVER_PORT)
         await site.start()
-
+        setup_application(app, dp)
         await asyncio.Event().wait()
     finally:
         await bot.session.close()
