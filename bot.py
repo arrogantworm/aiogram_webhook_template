@@ -36,7 +36,7 @@ async def start():
         )
         app = web.Application()
         SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=config.URL_PATH)
-        setup_application(app, dp, bot)
+        setup_application(app, dp, bot=bot)
         runner = web.AppRunner(app)
         await runner.setup()
         site = web.TCPSite(runner, host=config.SERVER_HOST, port=config.SERVER_PORT)
