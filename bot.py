@@ -1,9 +1,9 @@
-from aiogram import Bot, Dispatcher, Router
-from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
-from core.settings import config
-from aiohttp import web
 import asyncio
 import logging
+from aiogram import Bot, Dispatcher
+from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+from aiohttp import web
+from core.settings import config
 from core.handlers import basic
 
 
