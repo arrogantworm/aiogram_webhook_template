@@ -8,8 +8,8 @@ Aiogram Webhook Bot Template
 <p>adduser USERNAME
 <p>usermod -aG sudo USERNAME
 <p>vim /etc/ssh/sshd_config
-<code>
-<p>PermitRootLogin no
+
+<p><code>PermitRootLogin no
 <p>X11Forwarding no
 <p>Port NEWPORT
 </code>
@@ -28,8 +28,8 @@ Aiogram Webhook Bot Template
 <p>sudo ufw allow ‘Nginx Full’
 <p>sudo systemctl stop nginx
 <p>sudo vim /etc/nginx/sites-available/DOMAINNAME
-<code>
-<p>server {
+
+<p><code>server {
 <p>  server_name DOMAINNAME;
 <p>    listen 80;
 <p>  location /BOTURL {
@@ -46,8 +46,8 @@ Aiogram Webhook Bot Template
 <p>sudo nginx -t
 <p>sudo certbot --nginx -d DOMAINNAME
 <p>sudo vim /etc/nginx/sites-available/DOMAINNAME
-<code>
-<p><b>*add at the beginning*</b>
+
+<p><code><b>*add at the beginning*</b>
 <p><b>*disable http://server_ip access*</b>
 <p>server {
 <p>	listen 80;
@@ -80,8 +80,8 @@ Aiogram Webhook Bot Template
 <p>deactivate
 <p><b>5.	Настройка автозапуска бота</b>
 <p>sudo vim /etc/systemd/system/BOTNAME.service
-<code>
-<p>[Unit]
+
+<p><code>[Unit]
 <p>Description=DESCRIPTION
 <p>After=syslog.target
 <p>After=network.target
