@@ -69,7 +69,7 @@ Aiogram Webhook Bot Template
 <p>mkdir FOLDERNAME
 <p>cd FOLDERNAME
 <p>git clone GIT_BOT_URL .
-<p>cp env_template.env
+<p>cp env_template .env
 <p>vim .env
 <p>Esc - :wq
 <p>python3 -m venv venv
